@@ -6,7 +6,7 @@
 /*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:08:46 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/10/03 12:17:09 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:04:44 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,31 @@
 // tgoto
 // tputs
 
-int	main()
+int main()
 {
+	char *line = NULL;
 
+	while (1)
+	{
+		line = readline("> ");
+		if (!strcmp(line, "exit"))
+		{
+			free(line);
+			break;
+		}
+		if (line != NULL && strlen(line) != 0)
+			printf("line is '%s'\n", line);
+		add_history(line);
+
+		fork
+		execve()
+		free(line);
+	}
+	printf("exit\n");
+	return 0;
+}
+
+__attribute__((destructor))
+static void destructor() {
+	system("leaks -q a.out");
 }
