@@ -6,7 +6,7 @@
 /*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:08:46 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/10/13 15:04:44 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/10/13 19:03:29 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,54 @@
 // tgoto
 // tputs
 
+void	handler(int sig)
+{
+	if (sig == SIGINT)
+		rl_redisplay();
+		rl_on_new_line();
+}
+
 int main()
 {
 	char *line = NULL;
+	pid_t				pid;
+	struct sigaction	sa;
+	//int		pid1;
 
+
+	pid = getpid();
+	//printf("%d\n", pid);//プロセス番号の確認
+	sa.sa_handler = handler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+	if (sigaction(SIGINT, &sa, NULL) == -1)
+		return (1);
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
+		return (1);
 	while (1)
 	{
 		line = readline("> ");
+		if (line == NULL)
+		{
+			printf("exit\n");
+			exit(0);
+		}
 		if (!strcmp(line, "exit"))
 		{
 			free(line);
 			break;
 		}
-		if (line != NULL && strlen(line) != 0)
+		if (strlen(line) != 0)
 			printf("line is '%s'\n", line);
 		add_history(line);
-
-		fork
-		execve()
 		free(line);
+		line = NULL;
 	}
 	printf("exit\n");
 	return 0;
 }
 
-__attribute__((destructor))
-static void destructor() {
-	system("leaks -q a.out");
-}
+//__attribute__((destructor))
+//static void destructor() {
+//	system("leaks -q a.out");
+//}
