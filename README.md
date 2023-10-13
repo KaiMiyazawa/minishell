@@ -90,4 +90,3 @@ This is work space of "minishll" (one of 42cursus project).
  tgetstr  
  tgoto  
  tputs  
- 
