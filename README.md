@@ -37,7 +37,7 @@ This is work space of "minishll" (one of 42cursus project).
 	*Ctrl - \ : 何も行わないでください  
 
 # function memo
- readline  
+ readline  'char *readline (char *prompt);'
  rl_clear_history  
  rl_on_new_line  
  rl_replace_line  
