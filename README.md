@@ -37,8 +37,8 @@ This is work space of "minishll" (one of 42cursus project).
 	*Ctrl - \ : 何も行わないでください  
 
 # function memo
- readline  `char *readline (char *prompt);` `prompt`で指定された文字を行頭に表示しつつ、返り値に読み取った行を返す。返り値に'\n'は含まれない。　空白行は空白の文字列を返す。行の読み取り中にEOFが検出され、その行が空の時、NULLを返す。EOFが検出されたが、その行が空でない場合、EOFは改行として扱われる。
- rl_clear_history  
+ readline  `char *readline (char *prompt);` `prompt`で指定された文字を行頭に表示しつつ、返り値に読み取った行を返す。返り値に'\n'は含まれない。　空白行は空白の文字列を返す。行の読み取り中にEOFが検出され、その行が空の時、NULLを返す。EOFが検出されたが、その行が空でない場合、EOFは改行として扱われる。  
+ rl_clear_history  int	rl_on_new_line(void);`   
  rl_on_new_line  
  rl_replace_line  
  rl_redisplay  
