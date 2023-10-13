@@ -33,11 +33,11 @@ This is work space of "minishll" (one of 42cursus project).
 ・ 「ctrl-C」、「ctrl-D」、そして「ctrl-\」は、bashの場合と同じ結果となるようにしてください  
 ・ インタラクティブのとき（訳者註: コマンド入力待ちの状態で）：  
 	*Ctrl - C : 次の行に、プロンプトを表示してください  
-	*Ctrl - D : シェルを終了してください  
+	*Ctrl - D : シェルを終了してください✅  
 	*Ctrl - \ : 何も行わないでください  
 
 # function memo
- readline  `char *readline (char *prompt);`
+ readline  `char *readline (char *prompt);` `prompt`で指定された文字を行頭に表示しつつ、返り値に読み取った行を返す。返り値に'\n'は含まれない。　空白行は空白の文字列を返す。行の読み取り中にEOFが検出され、その行が空の時、NULLを返す。EOFが検出されたが、その行が空でない場合、EOFは改行として扱われる。
  rl_clear_history  
  rl_on_new_line  
  rl_replace_line  
