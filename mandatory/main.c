@@ -6,7 +6,7 @@
 /*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:08:46 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/10/13 19:03:29 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/10/13 19:15:37 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	handler(int sig)
 {
 	if (sig == SIGINT)
 		rl_redisplay();
-		rl_on_new_line();
+		//rl_on_new_line();
 }
 
 int main()
