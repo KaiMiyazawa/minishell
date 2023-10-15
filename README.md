@@ -39,7 +39,7 @@ This is work space of "minishll" (one of 42cursus project).
 # function memo
  readline  `char *readline (char *prompt);` `prompt`で指定された文字を行頭に表示しつつ、返り値に読み取った行を返す。返り値に'\n'は含まれない。　空白行は空白の文字列を返す。行の読み取り中にEOFが検出され、その行が空の時、NULLを返す。EOFが検出されたが、その行が空でない場合、EOFは改行として扱われる。  
  rl_clear_history  `void rl_clear_history (void);` readlineの履歴を削除する。  
- rl_on_new_line  `int	rl_on_new_line(void);` ラインを更新して再表示する。 
+ rl_on_new_line  `int	rl_on_new_line(void);` ラインを更新して再表示する。  
  rl_replace_line  `void rl_replace_line (const char *text, int clear_undo)`  。  
  rl_redisplay  `void rl_redisplay (void)` 。  
  add_history  
