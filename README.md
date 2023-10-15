@@ -106,8 +106,11 @@ This is work space of "minishll" (one of 42cursus project).
  ioctl  
  `int ioctl(int fd, unsigned long request, ...);` ちょっと説明がむずすぎて訳わかんなかった。  
  getenv  
+ `char *getenv(const char *name);` `name`で指定した名前の環境変数の値を返す。  
  tcsetattr  
+ `int tcsetattr(int fd, int when, const struct termios *termptr);`  termios構造体を設定する。tcgetattr()するための準備?のような感じ。  
  tcgetattr  
+ `int tcgetattr(int fildes, struct termios *termptr);`端末(tty)の設定を取得する関数。ttyデバイスの特定の設定に関する情報を取得するために使用する。  
  tgetent  
  tgetflag  
  tgetnum  
