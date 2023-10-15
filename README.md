@@ -37,12 +37,18 @@ This is work space of "minishll" (one of 42cursus project).
 	*Ctrl - \ : 何も行わないでください  
 
 # function memo
- readline  `char *readline (char *prompt);` `prompt`で指定された文字を行頭に表示しつつ、返り値に読み取った行を返す。返り値に'\n'は含まれない。　空白行は空白の文字列を返す。行の読み取り中にEOFが検出され、その行が空の時、NULLを返す。EOFが検出されたが、その行が空でない場合、EOFは改行として扱われる。  
- rl_clear_history  `void rl_clear_history (void);` readlineの履歴を削除する。  
- rl_on_new_line  `int	rl_on_new_line(void);` ラインを更新して再表示する。  
- rl_replace_line  `void rl_replace_line (const char *text, int clear_undo);`  。  
- rl_redisplay  `void rl_redisplay (void);` 。  
- add_history  `int	add_history(const char *);`。  
+ readline  
+ `char *readline (char *prompt);` `prompt`で指定された文字を行頭に表示しつつ、返り値に読み取った行を返す。返り値に'\n'は含まれない。　空白行は空白の文字列を返す。行の読み取り中にEOFが検出され、その行が空の時、NULLを返す。EOFが検出されたが、その行が空でない場合、EOFは改行として扱われる。  
+ rl_clear_history  
+ `void rl_clear_history (void);` readlineの履歴を削除する。  
+ rl_on_new_line  
+ `int	rl_on_new_line(void);` ラインを更新して再表示する。  
+ rl_replace_line  
+ `void rl_replace_line (const char *text, int clear_undo);`  。  
+ rl_redisplay  
+ `void rl_redisplay (void);` 。  
+ add_history  
+ `int	add_history(const char *);`。  
  
  printf  
  malloc  
@@ -68,12 +74,18 @@ This is work space of "minishll" (one of 42cursus project).
  dup2  
  pipe  
    
- getcwd  `char *getcwd(char *buf, size_t length);`現在のディレクトリ名を取得し、`buf`に入れる。  
- chdir  `int *chdir(const char *path)` `path`で指定され文字列にカレントディレクトリに変更する。  
- stat  `int stat(const char *pathname, struct stat *buf);` ファイルやディレクトリの状態を取得する `path`で状態を取得したいもののパス名を指定する。 `buf`は、取得した状態を格納するstat構造体を指定する。  
- lstat  `int lstat(const char *path, struct stat *sb);` stat関数とほぼ同じ。違うのは、指定したファイルがシンボリックリンクだった時に、stat()はリンクの情報を、lstat()はリンクが参照するファイルの情報を返す。  
- fstat  `int fstat(int fd, struct stat *sb);` stat()がcharのpathで指定するのに対し、fstat()はファイルディスクリプた`fd`で指定する。`sb`に格納する値は同じ。  
- unlink  `int unlink(const char *pathname);` ファイルシステム上の名前を削除する。もし、その指定した名前がファイルへの最後のlinkで、どのプロセスでもopen()されていなければ、ファイルは削除される。  
+ getcwd  
+ `char *getcwd(char *buf, size_t length);`現在のディレクトリ名を取得し、`buf`に入れる。  
+ chdir  
+ `int *chdir(const char *path)` `path`で指定され文字列にカレントディレクトリに変更する。  
+ stat  
+ `int stat(const char *pathname, struct stat *buf);` ファイルやディレクトリの状態を取得する `path`で状態を取得したいもののパス名を指定する。 `buf`は、取得した状態を格納するstat構造体を指定する。  
+ lstat  
+ `int lstat(const char *path, struct stat *sb);` stat関数とほぼ同じ。違うのは、指定したファイルがシンボリックリンクだった時に、stat()はリンクの情報を、lstat()はリンクが参照するファイルの情報を返す。  
+ fstat  
+ `int fstat(int fd, struct stat *sb);` stat()がcharのpathで指定するのに対し、fstat()はファイルディスクリプた`fd`で指定する。`sb`に格納する値は同じ。  
+ unlink  
+ `int unlink(const char *pathname);` ファイルシステム上の名前を削除する。もし、その指定した名前がファイルへの最後のlinkで、どのプロセスでもopen()されていなければ、ファイルは削除される。  
  
  opendir  
  readdir  
