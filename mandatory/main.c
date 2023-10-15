@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 12:08:46 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/10/13 19:15:37 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:49:32 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,51 +68,22 @@
 // tgoto
 // tputs
 
-void	handler(int sig)
+extern int	g_state;
+
+void	data_init(int ac, char **av, char **ev, t_data *data)
 {
-	if (sig == SIGINT)
-		rl_redisplay();
-		//rl_on_new_line();
+	data->ac = ac;
+	data->av = av;
+	data->envp = ev;
 }
 
-int main()
+int	main(int argc, char **argv, char **envp)
 {
-	char *line = NULL;
-	pid_t				pid;
-	struct sigaction	sa;
-	//int		pid1;
+	t_data	data;
 
-
-	pid = getpid();
-	//printf("%d\n", pid);//プロセス番号の確認
-	sa.sa_handler = handler;
-	sigemptyset(&sa.sa_mask);
-	sa.sa_flags = 0;
-	if (sigaction(SIGINT, &sa, NULL) == -1)
-		return (1);
-	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
-		return (1);
-	while (1)
-	{
-		line = readline("> ");
-		if (line == NULL)
-		{
-			printf("exit\n");
-			exit(0);
-		}
-		if (!strcmp(line, "exit"))
-		{
-			free(line);
-			break;
-		}
-		if (strlen(line) != 0)
-			printf("line is '%s'\n", line);
-		add_history(line);
-		free(line);
-		line = NULL;
-	}
-	printf("exit\n");
-	return 0;
+	data_init(argc, argv, envp, &data);
+	minishell();
+	return (0);
 }
 
 //__attribute__((destructor))

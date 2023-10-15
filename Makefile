@@ -1,7 +1,8 @@
  #SETUP
 NAME		=	minishell
 CC			=	gcc
-FLAGS		=	-Wall -Wextra -Werror
+#FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra
 RM			=	rm -rf
 
 #FILES AND PATH
@@ -9,7 +10,8 @@ HEADER_SRCS	=	minishell.h
 HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-MPATH_SRCS	=	main.c
+MPATH_SRCS	=	main.c \
+				minishell.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
@@ -25,7 +27,7 @@ OBJ_M		=	$(MPATH:.c=.o)
 				@${CC} ${FLAGS} -c $< -o $@
 
 $(NAME):		$(OBJ_M)
-				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME)
+				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -lreadline
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all:			$(NAME)
