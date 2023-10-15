@@ -112,7 +112,7 @@ This is work space of "minishll" (one of 42cursus project).
  tcgetattr  
  `int tcgetattr(int fildes, struct termios *termptr);`端末(tty)の設定を取得する関数。ttyデバイスの特定の設定に関する情報を取得するために使用する。  
  tgetent  
- `int tgetent(char *bp, const char *name);` 端末(tty)のキャパビリティデータベースを読み込むための関数。
+ `int tgetent(char *bp, const char *name);` 端末(tty)のキャパビリティデータベースを読み込むための関数。  
  tgetflag  
  `int tgetflag(const char *id);` 端末(tty)のキャパビリティデータベースからフラグ(boolean値)を取得するための関数。  
  tgetnum  
