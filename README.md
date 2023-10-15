@@ -68,9 +68,9 @@ This is work space of "minishll" (one of 42cursus project).
  dup2  
  pipe  
    
- getcwd  
- chdir  
- stat  
+ getcwd  `char *getcwd(char *buf, size_t length);`現在のディレクトリ名を取得し、`buf`に入れる。  
+ chdir  `int *chdir(const char *path)` `path`で指定され文字列にカレントディレクトリに変更する。  
+ stat  `int stat(const char *pathname, struct stat *buf);` ファイルやディレクトリの状態を取得する `path`で状態を取得したいもののパス名を指定する。 `buf`は、取得した状態を格納するstat構造体を指定する。  
  lstat  
  fstat  
  unlink  
