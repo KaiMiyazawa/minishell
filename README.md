@@ -44,7 +44,7 @@ This is work space of "minishll" (one of 42cursus project).
  rl_redisplay  `void rl_redisplay (void);` 。  
  add_history  `int	add_history(const char *);`。  
  
- printf
+ printf  
  malloc  
  free  
  write  
