@@ -100,8 +100,11 @@ This is work space of "minishll" (one of 42cursus project).
  isatty  
  `int isatty(int fd);` `fd`が端末を参照するファイルディスクリプタかどうかを判定する。そうであれば1、違えば0を返し、errnoを設定する。
  ttyname  
+ `char *ttyname(int fd);`
  ttyslot  
+ `int ttyslot(void);` ttyスロット番号(?)を整数値で返す。
  ioctl  
+ `int ioctl(int fd, unsigned long request, ...);` ちょっと説明がむずすぎて訳わかんなかった。  
  getenv  
  tcsetattr  
  tcgetattr  
