@@ -98,11 +98,11 @@ This is work space of "minishll" (one of 42cursus project).
  perror  
  `また後で` `errno`を渡すと、対応する文字列を出力する。  
  isatty  
- `int isatty(int fd);` `fd`が端末を参照するファイルディスクリプタかどうかを判定する。そうであれば1、違えば0を返し、errnoを設定する。
+ `int isatty(int fd);` `fd`が端末を参照するファイルディスクリプタかどうかを判定する。そうであれば1、違えば0を返し、errnoを設定する。  
  ttyname  
- `char *ttyname(int fd);`
+ `char *ttyname(int fd);`ttyの端末名を取得する  
  ttyslot  
- `int ttyslot(void);` ttyスロット番号(?)を整数値で返す。
+ `int ttyslot(void);` ttyスロット番号(?)を整数値で返す。  
  ioctl  
  `int ioctl(int fd, unsigned long request, ...);` ちょっと説明がむずすぎて訳わかんなかった。  
  getenv  
