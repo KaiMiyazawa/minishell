@@ -43,7 +43,7 @@ This is work space of "minishll" (one of 42cursus project).
  rl_replace_line  `void rl_replace_line (const char *text, int clear_undo);`  。  
  rl_redisplay  `void rl_redisplay (void);` 。  
  add_history  `int	add_history(const char *);`。  
- printf  
+ <span style="color: red; ">printf</span>  
  malloc  
  free  
  write  
