@@ -43,7 +43,8 @@ This is work space of "minishll" (one of 42cursus project).
  rl_replace_line  `void rl_replace_line (const char *text, int clear_undo);`  。  
  rl_redisplay  `void rl_redisplay (void);` 。  
  add_history  `int	add_history(const char *);`。  
- <span style="color: red; ">printf</span>  
+ 
+ printf
  malloc  
  free  
  write  
@@ -62,16 +63,18 @@ This is work space of "minishll" (one of 42cursus project).
  sigaddset  
  kill  
  exit  
+ execve  
+ dup  
+ dup2  
+ pipe  
+   
  getcwd  
  chdir  
  stat  
  lstat  
  fstat  
  unlink  
- execve  
- dup  
- dup2  
- pipe  
+ 
  opendir  
  readdir  
  closedir  
