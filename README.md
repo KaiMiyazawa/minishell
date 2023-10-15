@@ -88,11 +88,17 @@ This is work space of "minishll" (one of 42cursus project).
  `int unlink(const char *pathname);` ファイルシステム上の名前を削除する。もし、その指定した名前がファイルへの最後のlinkで、どのプロセスでもopen()されていなければ、ファイルは削除される。  
  
  opendir  
+ `DIR *opendir(const char *name);` ディレクトリを開く。`name`で指定したディレクトリをオープンし、ディレクトリストリームを返す。  
  readdir  
+ `struct dirent *readdir(DIR *dirp);` `dirp`で指定するディレクトリストリームの中で、次のディレクトリエントリーについての`dirent`構造体へのポインターを返す。  
  closedir  
+ `int closedir(DIR *dirp);` `dirp`で指定したディレクトリストリームをcloseする。成功は0、エラーは-1を返す。エラーはerrnoを設定する。  
  strerror  
+ `また後で` `errno`を渡すと、対応する文字列を返す。  
  perror  
+ `また後で` `errno`を渡すと、対応する文字列を出力する。  
  isatty  
+ `int isatty(int fd);` `fd`が端末を参照するファイルディスクリプタかどうかを判定する。そうであれば1、違えば0を返し、errnoを設定する。
  ttyname  
  ttyslot  
  ioctl  
