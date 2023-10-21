@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:31:59 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/10/15 14:00:27 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/10/18 17:20:50 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	handler(int sig)
 {
 	if (sig == SIGINT)
+	{
+		ioctl(STDIN_FILENO, TIOCSTI, "\n");
+		//rl_replace_line("", 0);
 		rl_on_new_line();
-		//rl_redisplay();
+	}
 }
 
 void	handle_signals()
@@ -32,32 +35,47 @@ void	handle_signals()
 		exit (1);
 }
 
-void	minishell(void)
+char	*readline_e(char *prompt)
+{
+	char	*line;
+
+	line = NULL;
+	line = readline(prompt);
+	if (line == NULL)
+	{
+		printf(" EOF\nexit\n");
+		exit(1);
+	}
+	return (line);
+}
+
+void	minishell(t_data *data)
 {
 	char				*line;
 
-	//killコマンドで挙動確認する用
+	//killコマンドでctrl+Cとかの挙動確認する用
 	pid_t				pid;
 	pid = getpid();
 	printf("%d\n", pid);//プロセス番号の確認
 
 	line = NULL;
+	handle_signals();
 	while (1)
 	{
-		line = readline("> ");
-		if (line == NULL)
-		{
-			printf("exit\n");
-			exit(0);
-		}
+		line = readline_e("> ");
+		add_history(line);
 		if (!strcmp(line, "exit"))
 		{
 			free(line);
-			break;
+			break ;
 		}
-		if (strlen(line) != 0)
-			printf("line is '%s'\n", line);
-		add_history(line);
+		else if (strlen(line) != 0)
+		{
+			printf("command : %s\n", line);
+			lexer(line, data);
+			perser(data);
+			evaluater(data);
+		}
 		free(line);
 		line = NULL;
 	}

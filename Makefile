@@ -11,30 +11,30 @@ HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 MPATH_SRCS	=	main.c \
-				minishell.c
+				minishell.c \
+				utils_libft.c\
+				lexer.c\
+				perser.c\
+				evaluater.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
 
-#CHECKER_NAME=	checker
-#BPATH_SRCS	=
-#BPATH_DIR	=	bonus/
-#BPATH		=	$(addprefix $(BPATH_DIR), $(BPATH_SRCS))
-#OBJ_B		=	$(BPATH:.c=.o)
+ #READLINE PATH
+RL_HEADER	=	$(shell brew --prefix readline)/include
+RL_LIB		=	$(shell brew --prefix readline)/lib
 
 #COMMANDS
 %.o: %.c $(HEADER) Makefile
 				@${CC} ${FLAGS} -c $< -o $@
+				#@${CC} ${FLAGS} -I$(RL_HEADER) -c $< -o $@
 
 $(NAME):		$(OBJ_M)
 				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -lreadline
+				#@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -L$(RL_LIB) -lreadline
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all:			$(NAME)
-
-#bonus:			$(OBJ_B)
-#				@$(CC) ${FLAGS} $(OBJ_B) -o $(CHECKER_NAME)
-#				@echo -e "$(GREEN)$(CHECKER_NAME)(bonus) created!$(DEFAULT)"
 
 clean:
 				@$(RM) $(OBJ_M)
