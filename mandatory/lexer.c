@@ -14,6 +14,6 @@
 
 void	lexer(char *line, t_data *data)
 {
-	int	words;
-
+	// int	words;
+	;
 }
