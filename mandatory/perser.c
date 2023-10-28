@@ -14,5 +14,5 @@
 
 void	perser(t_data *data)
 {
-
+  ;
 }
