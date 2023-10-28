@@ -26,12 +26,10 @@ RL_LIB		=	$(shell brew --prefix readline)/lib
 
 #COMMANDS
 %.o: %.c $(HEADER) Makefile
-				@${CC} ${FLAGS} -c $< -o $@
-				#@${CC} ${FLAGS} -I$(RL_HEADER) -c $< -o $@
+				@${CC} ${FLAGS} -I$(RL_HEADER) -c $< -o $@
 
 $(NAME):		$(OBJ_M)
-				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -lreadline
-				#@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -L$(RL_LIB) -lreadline
+				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -L$(RL_LIB) -lreadline
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all:			$(NAME)
