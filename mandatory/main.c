@@ -12,6 +12,7 @@
 
 #include"../include/minishell.h"
 
+//最初に、dataに設定できる変数を設定する関数data_init
 void	data_init(int ac, char **av, char **ev, t_data *data)
 {
 	g_state = 0;
@@ -22,6 +23,7 @@ void	data_init(int ac, char **av, char **ev, t_data *data)
 
 int	main(int argc, char **argv, char **envp)
 {
+	//諸々の必要な変数を子供にもつ構造体data
 	t_data	data;
 
 	data_init(argc, argv, envp, &data);
