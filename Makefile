@@ -17,6 +17,7 @@ MPATH_SRCS	=	error.c\
 			main.c\
 			minishell.c \
 			perser.c\
+			signals.c\
 			utils_libft.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
