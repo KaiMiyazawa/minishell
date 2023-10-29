@@ -46,6 +46,9 @@ int	g_state;
 //関数の定義は、ファイルのabc順に並べています。
 //関数名に_eをつけた関数を作り、エラーハンドリングを内包させる方針でとりあえず書いていってます。
 
+//error.c
+void	print_error(char *error_msg, char*addition, bool exit_state, t_data *d);
+
 //evaluater.c
 void	evaluater(t_data *data);
 
@@ -53,7 +56,6 @@ void	evaluater(t_data *data);
 void	lexer(char *line, t_data *data);
 
 //main.c
-void	print_error(char *error_msg, char*addition, bool exit_state, t_data *d);
 
 //minishell.c
 void	handler(int sig);
