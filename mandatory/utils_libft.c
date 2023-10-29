@@ -12,6 +12,9 @@
 
 #include"../include/minishell.h"
 
+//libftから引っ張ってきた諸々の関数を置いていくファイルです。
+//関数の数が増えてきた場合、utils_libft2.c , utils_libft3.c ,,,,という感じでファイルを増やしていきます。
+
 int	ft_strlen(const char *str)
 {
 	int	len;
