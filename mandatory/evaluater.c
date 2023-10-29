@@ -12,6 +12,7 @@
 
 #include"../include/minishell.h"
 
+//今後どんな構造になるかわからないですが、ざっくりの見通しのために、構文化済みのものを実行する関数を枠だけ置いておきました。
 void	evaluater(t_data *data)
 {
 	;
