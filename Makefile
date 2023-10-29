@@ -31,6 +31,7 @@ RL_LIB		=	$(shell brew --prefix readline)/lib
 				@${CC} ${FLAGS} -I$(RL_HEADER) -c $< -o $@
 
 $(NAME):		$(OBJ_M)
+				@chmod 777 put_a_endless
 				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -L$(RL_LIB) -lreadline
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
