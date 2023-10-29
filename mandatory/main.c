@@ -12,8 +12,6 @@
 
 #include"../include/minishell.h"
 
-int	g_state;
-
 void	add_str(char *s1, char *s2)
 {
 	int	count;
