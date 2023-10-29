@@ -12,6 +12,7 @@
 
 #include"../include/minishell.h"
 
+//今後どんな構造になるかわからないですが、ざっくりの見通しのために、トークンを構文木にする関数を枠だけ置いておきました。
 void	perser(t_data *data)
 {
   ;
