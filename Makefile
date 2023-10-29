@@ -11,7 +11,8 @@ HEADER_SRCS	=	minishell.h
 HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-MPATH_SRCS	=	evaluater.c \
+MPATH_SRCS	=	error.c\
+			evaluater.c \
 			lexer.c\
 			main.c\
 			minishell.c \
