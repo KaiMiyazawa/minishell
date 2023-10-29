@@ -70,6 +70,11 @@ void	minishell(t_data *data)
 			free(line);
 			break ;
 		}
+		//プログラム挙動中のsignal確認用
+		else if (!strcmp(line, "./put_a_endless"))
+			system("./put_a_endless");
+		//ctrl + \ は、プログラム実行中は「Quit: 3\n」で終わらせないといけない
+		//でもできてない
 		else if (strlen(line) != 0)
 		{
 			printf("command : %s\n", line);
