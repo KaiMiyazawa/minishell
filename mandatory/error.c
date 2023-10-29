@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.c"
+#include "../include/minishell.h"
 
 static void	add_str(char *s1, char *s2)
 {
