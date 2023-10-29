@@ -12,20 +12,9 @@
 
 #include "../include/minishell.h"
 
-static void	add_str(char *s1, char *s2)
-{
-	int	count;
-	int	count2;
-
-	count = 0;
-	count2 = 0;
-	while (s1[count] != '\0')
-		count++;
-	while (s2[count2] != '\0')
-		s1[count++] = s2[count2++];
-	s1[count] = '\0';
-}
-
+//bashの形式に合わせたエラーメッセージを出して、グローバル変数g_stateに修了ステータスを格納する関数です。
+//エラーメッセージの具体例↓
+//minishell: pwdd: command not found
 void	print_error(char *error_msg, char *addition, bool exit_state, t_data *d)
 {
 	char	*error;
@@ -49,4 +38,18 @@ void	print_error(char *error_msg, char *addition, bool exit_state, t_data *d)
 		perror(strerror(errno));
 	free(error);
 	g_state = exit_state;
+}
+
+static void	add_str(char *s1, char *s2)
+{
+	int	count;
+	int	count2;
+
+	count = 0;
+	count2 = 0;
+	while (s1[count] != '\0')
+		count++;
+	while (s2[count2] != '\0')
+		s1[count++] = s2[count2++];
+	s1[count] = '\0';
 }
