@@ -63,7 +63,8 @@ void	minishell(t_data *data)
 	while (1)
 	{
 		line = readline_e("> ");
-		add_history(line);
+		if (ft_strlen(line) > 0)
+			add_history(line);
 		if (!strcmp(line, "exit"))
 		{
 			free(line);
