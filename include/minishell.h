@@ -64,6 +64,9 @@ void	minishell(t_data *data);
 //perser.c
 void	perser(t_data *data);
 
+//signals.c
+void	handle_signals(void);
+
 //utils_libft.c
 int		ft_strlen(const char *str);
 void	*ft_calloc(size_t n, size_t size);
