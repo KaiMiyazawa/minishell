@@ -1,21 +1,22 @@
  #SETUP
 NAME		=	minishell
 CC			=	gcc
+#開発段階でいちいちwarningをerror扱いされるとめんどくさいケースがあると思うので、一時的に -Werror を外せるように、コメントでもう一つのフラッグを書いています。
 #FLAGS		=	-Wall -Wextra -Werror
 FLAGS		=	-Wall -Wextra
-RM			=	rm -rf
+RM		=	rm -rf
 
 #FILES AND PATH
 HEADER_SRCS	=	minishell.h
 HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-MPATH_SRCS	=	main.c \
-				minishell.c \
-				utils_libft.c\
-				lexer.c\
-				perser.c\
-				evaluater.c
+MPATH_SRCS	=	evaluater.c \
+			lexer.c\
+			main.c\
+			minishell.c \
+			perser.c\
+			utils_libft.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
