@@ -12,6 +12,7 @@
 
 #include "../include/minishell.h"
 
+//signalの扱いを記述する関数
 void	handler(int sig)
 {
 	if (sig == SIGINT)
@@ -22,6 +23,7 @@ void	handler(int sig)
 	}
 }
 
+//signalの扱いの設定を置く関数
 void	handle_signals()
 {
 	struct sigaction	sa;
