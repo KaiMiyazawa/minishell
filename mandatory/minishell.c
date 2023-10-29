@@ -12,6 +12,7 @@
 
 #include"../include/minishell.h"
 
+//エラー処理を込みでひと関数にしたreadline
 char	*readline_e(char *prompt)
 {
 	char	*line;
@@ -40,8 +41,10 @@ void	minishell(t_data *data)
 	while (1)
 	{
 		line = readline_e("> ");
+		//bashは入力がから文字列の時は履歴に残らないので、以下の条件でadd_historyする
 		if (ft_strlen(line) > 0)
 			add_history(line);
+		//入力にexitと入れるとプログラムを終われる
 		if (!strcmp(line, "exit"))
 		{
 			free(line);
@@ -51,9 +54,11 @@ void	minishell(t_data *data)
 		else if (!strcmp(line, "./put_a_endless"))
 			system("./put_a_endless");
 		//ctrl + \ は、プログラム実行中は「Quit: 3\n」で終わらせないといけない
-		//でもできてない
+		//でもできてない←入力処理のわかっている問題の一つ
 		else if (strlen(line) != 0)
 		{
+			//ここでlexer, perser, コマンド実行部に順次かけていく
+			//すべてのデータの受け渡しは、data構造体を通して行う
 			printf("command : %s\n", line);
 			lexer(line, data);
 			perser(data);
