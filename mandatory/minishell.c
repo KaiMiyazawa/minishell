@@ -36,7 +36,7 @@ void	minishell(t_data *data)
 	pid = getpid();
 	printf("%d\n", pid);//プロセス番号の確認
 
-	line = NULL;
+	rl_outstream = stderr;
 	handle_signals();
 	while (1)
 	{
