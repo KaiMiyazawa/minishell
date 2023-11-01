@@ -42,7 +42,7 @@ void	minishell(t_data *data)
 	{
 		line = readline_e("> ");
 		//bashは入力がから文字列の時は履歴に残らないので、以下の条件でadd_historyする
-		if (*line)
+		if ()
 			add_history(line);
 		//入力にexitと入れるとプログラムを終われる
 		if (!strcmp(line, "exit"))
