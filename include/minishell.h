@@ -49,13 +49,19 @@ int	g_state;
 //error.c
 void	print_error(char *error_msg, char*addition, bool exit_state, t_data *d);
 
-//evaluater.c
-void	evaluater(t_data *data);
+//executer.c
+void	executor(t_data *data);
+
+//expander.c
+void	expander(t_data *data);
 
 //lexer.c
 void	lexer(char *line, t_data *data);
 
 //main.c
+
+//make_path.c
+char	**make_path(const char *path_line);
 
 //minishell.c
 void	handler(int sig);
@@ -71,5 +77,8 @@ void	handle_signals(void);
 int		ft_strlen(const char *str);
 void	*ft_calloc(size_t n, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+
+//utils_libft2.c
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif
