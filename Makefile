@@ -12,13 +12,16 @@ HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 MPATH_SRCS	=	error.c\
-			evaluater.c \
+			executer.c\
+			expander.c\
 			lexer.c\
 			main.c\
+			make_path.c\
 			minishell.c \
 			perser.c\
 			signals.c\
-			utils_libft.c
+			utils_libft.c\
+			utils_libft2.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
