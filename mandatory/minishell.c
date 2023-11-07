@@ -62,7 +62,8 @@ void	minishell(t_data *data)
 			printf("command : %s\n", line);
 			lexer(line, data);
 			perser(data);
-			evaluater(data);
+			expander(data);
+			executer(data);
 		}
 		free(line);
 		line = NULL;
