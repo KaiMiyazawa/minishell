@@ -12,14 +12,14 @@ HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 MPATH_SRCS	=	error.c\
-			executer.c\
-			expander.c\
-			lexer.c\
-			main.c\
+			executer.c \
+			expander.c \
+			lexer.c    \
+			main.c     \
 			make_path.c\
-			minishell.c \
-			perser.c\
-			signals.c\
+			minishell.c\
+			perser.c   \
+			signals.c  \
 			utils_libft.c\
 			utils_libft2.c
 MPATH_DIR	=	mandatory/
@@ -51,6 +51,11 @@ fclean:			clean
 				@echo -e "$(RED)all deleted!$(DEFAULT)"
 
 re:				fclean all
+
+j:				re
+				@$(RM) $(OBJ_M)
+				@$(RM) $(OBJ_B)
+				@echo -e "$(YELLOW)object files deleted!$(DEFAULT)"
 
 .PHONY:		all clean fclean bonus re
 

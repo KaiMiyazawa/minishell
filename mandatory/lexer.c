@@ -15,6 +15,6 @@
 //今後どんな構造になるかわからないですが、ざっくりの見通しのために、入力された文字列をトークンにする関数を枠だけ置いておきました。
 void	lexer(char *line, t_data *data)
 {
-	// int	words;
-	;
+	if (data && line)
+		;
 }

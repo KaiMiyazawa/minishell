@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 13:31:59 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/10/18 17:20:50 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/11/07 11:52:52 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char	*readline_e(char *prompt)
 {
 	char	*line;
+	char	*result;
 
 	line = NULL;
 	line = readline(prompt);
@@ -24,7 +25,14 @@ char	*readline_e(char *prompt)
 		printf(" EOF\nexit\n");
 		exit(1);
 	}
-	return (line);
+	//文頭と文末のSPACEと\tをトリミングします。
+	result = ft_strtrim(line, SPACE_AND_TAB);
+	if (result == NULL)
+	{
+		exit(1);
+	}
+	free(line);
+	return (result);
 }
 
 void	minishell(t_data *data)
@@ -63,7 +71,7 @@ void	minishell(t_data *data)
 			lexer(line, data);
 			perser(data);
 			expander(data);
-			executer(data);
+			executor(data);
 		}
 		free(line);
 		line = NULL;
