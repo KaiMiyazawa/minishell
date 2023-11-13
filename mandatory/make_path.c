@@ -125,6 +125,9 @@ char	**make_path(const char *path_line)
 		}
 	}
 	else
-		resu_vec[0] = NULL;
+	{
+		resu_vec[0] = '.';
+		resu_vec[1] = NULL;
+	}
 	return (resu_vec);
 }
