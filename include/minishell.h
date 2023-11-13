@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:52:07 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/10/21 09:57:19 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/11/06 12:35:43 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include <stdbool.h>
 
 # define FAILED -1
+# define SPACE_AND_TAB " \t"
 
 typedef struct s_data
 {
@@ -39,6 +40,13 @@ typedef struct s_data
 	char		**av;
 	char		**envp;
 
+	char			*path_line;
+	char			**path;
+
+	int				in_fd;
+	int				out_fd;
+	char			*infile;
+	char			*outfile;
 }				t_data;
 
 int	g_state;

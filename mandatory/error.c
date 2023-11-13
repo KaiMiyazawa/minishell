@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:44:49 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/10/29 18:45:06 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/11/07 11:57:01 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	print_error(char *error_msg, char *addition, bool exit_state, t_data *d)
 	char	*error;
 	int		size;
 
+	if (d)
+		;
 	size = 11 + ft_strlen(error_msg) + 1 + 1;
 	if (addition != NULL)
 		size += 2 + ft_strlen(addition);
