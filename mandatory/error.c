@@ -6,53 +6,45 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:44:49 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/11/07 11:57:01 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/11/18 18:53:09 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	add_str(char *s1, char *s2)
-{
-	int	count;
-	int	count2;
-
-	count = 0;
-	count2 = 0;
-	while (s1[count] != '\0')
-		count++;
-	while (s2[count2] != '\0')
-		s1[count++] = s2[count2++];
-	s1[count] = '\0';
-}
-
 //bashの形式に合わせたエラーメッセージを出して、グローバル変数g_stateに修了ステータスを格納する関数です。
 //エラーメッセージの具体例↓
 //minishell: pwdd: command not found
-void	print_error(char *error_msg, char *addition, bool exit_state, t_data *d)
+void	print_error(char *error_msg, char *addition, int exit_state)
 {
-	char	*error;
-	int		size;
-
-	if (d)
-		;
-	size = 11 + ft_strlen(error_msg) + 1 + 1;
+	if (error_msg == NULL)
+		return ;
+	printf("minishell: ");
 	if (addition != NULL)
-		size += 2 + ft_strlen(addition);
-	error = (char *)ft_calloc(sizeof(char), size);
-	if (!error)
-		perror(strerror(errno));
-	ft_strlcpy(error, "minishell: ", 12);
-	if (addition != NULL)
-	{
-		add_str(error, addition);
-		add_str(error, ": ");
-	}
-	add_str(error, error_msg);
-	add_str(error, "\n");
-	if (write(2, error, size) == FAILED)
-		perror(strerror(errno));
-	free(error);
+		printf("%s: ", addition);
+	printf("%s\n", error_msg);
 	g_state = exit_state;
 }
 
+//void	fatal_error()
+//{
+//	print_error("fatal error", NULL, 1);
+//	exit(g_state);
+//}
+
+void	put_unexpected_token_error(char *token)
+{
+	ft_putstr_fd("minishell: syntax error near unexpected token `", STDERR_FILENO);
+	ft_putstr_fd(token, STDERR_FILENO);
+	ft_putendl_fd("'", STDERR_FILENO);
+	g_state = 258;
+}
+
+void	exit_minishell(int exit_status, t_data *data)
+{
+	printf("exit\n");
+	g_state = exit_status;
+	if (data)
+		free_all_data(data);
+	exit(exit_status);
+}

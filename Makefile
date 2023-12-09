@@ -11,17 +11,19 @@ HEADER_SRCS	=	minishell.h
 HEADER_DIR	=	include/
 HEADER		=	$(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-MPATH_SRCS	=	error.c\
+MPATH_SRCS	= debug.c    \
+			error.c    \
 			executer.c \
 			expander.c \
+			free.c     \
 			lexer.c    \
 			main.c     \
 			make_path.c\
 			minishell.c\
 			perser.c   \
 			signals.c  \
-			utils_libft.c\
-			utils_libft2.c
+			tk_list.c  \
+			tk_utils.c
 MPATH_DIR	=	mandatory/
 MPATH		=	$(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		=	$(MPATH:.c=.o)
@@ -36,7 +38,8 @@ RL_LIB		=	$(shell brew --prefix readline)/lib
 
 $(NAME):		$(OBJ_M)
 				@chmod 777 put_a_endless
-				@$(CC) ${FLAGS} $(OBJ_M) -o $(NAME) -L$(RL_LIB) -lreadline
+				@make -C ./libft
+				@$(CC) ${FLAGS} $(OBJ_M) ./libft/libft.a -o $(NAME) -L$(RL_LIB) -lreadline
 				@echo -e "$(GREEN)$(NAME) created!$(DEFAULT)"
 
 all:			$(NAME)

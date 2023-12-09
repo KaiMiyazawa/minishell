@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:22:15 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/12/01 20:38:03 by miyazawa.ka      ###   ########.fr       */
+/*   Created: 2023/05/19 10:11:37 by miyazawa.ka       #+#    #+#             */
+/*   Updated: 2023/05/21 10:55:19 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include "libft.h"
 
-//今後どんな構造になるかわからないですが、ざっくりの見通しのために、トークンを展開する関数を枠だけ置いておきました。
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c += 'a' - 'A';
+	return (c);
+}
 
+//#include<stdio.h>
+//int main(void)
+//{
+//	printf("%c\n", ft_tolower('Z'));
+//}

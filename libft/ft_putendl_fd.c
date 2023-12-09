@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:22:15 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/12/01 20:38:03 by miyazawa.ka      ###   ########.fr       */
+/*   Created: 2023/05/21 16:16:34 by kmiyazaw          #+#    #+#             */
+/*   Updated: 2023/05/28 13:36:16 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include"libft.h"
 
-//今後どんな構造になるかわからないですが、ざっくりの見通しのために、トークンを展開する関数を枠だけ置いておきました。
+void	ft_putendl_fd(char *s, int fd)
+{
+	char	new_line;
 
+	new_line = '\n';
+	ft_putstr_fd(s, fd);
+	write(fd, &new_line, 1);
+}

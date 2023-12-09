@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:22:15 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/12/01 20:38:03 by miyazawa.ka      ###   ########.fr       */
+/*   Created: 2023/05/16 17:05:53 by kmiyazaw          #+#    #+#             */
+/*   Updated: 2023/05/21 10:53:58 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include "libft.h"
 
-//今後どんな構造になるかわからないですが、ざっくりの見通しのために、トークンを展開する関数を枠だけ置いておきました。
+int	ft_isdigit(int character)
+{
+	if (character >= '0' && character <= '9')
+		return (1);
+	else
+		return (0);
+}
 
+/*
+#include<stdio.h>
+
+int main(void)
+{
+	char a[] = "";
+
+	printf("%d\n", ft_isalpha(a));
+}
+*/

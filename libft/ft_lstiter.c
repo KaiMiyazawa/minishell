@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:22:15 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/12/01 20:38:03 by miyazawa.ka      ###   ########.fr       */
+/*   Created: 2023/05/28 16:03:26 by kmiyazaw          #+#    #+#             */
+/*   Updated: 2023/05/28 16:08:53 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../include/minishell.h"
+#include"libft.h"
 
-//今後どんな構造になるかわからないですが、ざっくりの見通しのために、トークンを展開する関数を枠だけ置いておきました。
-
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		(*f)(lst->content);
+		lst = lst->next;
+	}
+}
