@@ -5,18 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 16:52:07 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/11/25 16:14:11 by miyazawa.ka      ###   ########.fr       */
+/*   Created: 2023/11/24 18:42:41 by miyazawa.ka       #+#    #+#             */
+/*   Updated: 2023/11/29 22:00:39 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include "../libft/libft.h"
-
-//minishell.hは、すべてのinclude、define、関数の宣言を含んでいます。
-//ヘッダーファイルは、基本的に一つにまとめるつもりで現状書いています。(宮澤2023/10/29
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -32,130 +28,86 @@
 # include <sys/ioctl.h>
 # include <errno.h>
 # include <stdbool.h>
+# include <limits.h>
 
-# define FAILED -1
-# define SPACE_AND_TAB " \t"
+# include "../libft/libft.h"
+# include "minishell_typedef.h"
+# include "minishell_constants.h"
 
-# define DEBUG true
-#define TYPE_STR(var) #var
+int		g_sig_num;
 
-typedef enum e_tk_type {
-	STR,		// 文字列
-	RDIR,		// >
-	RRDIR,		// >>
-	LDIR,		// <
-	LLDIR,		// <<
-	SPACE_,		/*   *///
-	SQUOTE,		// '
-	DQUOTE,		// "
-	PIPE,		// |
-	DOLL,		// $
-	RINT,		// 2>file の[2]
-	NULL_
-	//RINTだけ、一文字見ただけでstrかstr以外かの判別でstr以外と認識できない。
-	//→これだけ別で処理したい。
+t_cmd	*g_cmd_ptr;
 
-	//SSTR,		// single_quote 内の文字列。
-	//LLLDIR,	// <<<
-	//DPIPE,	// ||
-	//AND,		// &
-	//DAND,		// &&
-	//SCOLON,	// ;
-	//DSCOLON,	// ;;
-	//ESC,		/* \ */
-}				t_tk_type;
+char		**make_path(const char *path_line);
+void		minishell(t_data *data);
 
-typedef struct s_token	t_tk;
+void		here_debug(void);
 
-typedef struct s_token {
-	char			*word;
-	t_tk_type	type;
-	t_tk	*next;
-}				t_tk;
-
-typedef struct s_data
-{
-	int			ac;
-	char		**av;
-	char		**envp;
-
-	char			**path;
-
-	int				line_size;
-	char			*line;
-
-	int 			in_fd;
-	int 			out_fd;
-
-	t_tk			*tk_head;
-	t_tk			*tk_tail;
-}				t_data;
-
-int	g_state;
-
-//関数の定義は、ファイルのabc順に並べています。
-//関数名に_eをつけた関数を作り、エラーハンドリングを内包させる方針でとりあえず書いていってます。
+void		confirm_data(t_data *data);
+void		confirm_tklist(t_data *data);
 
 
+t_tk_list	*tk_list_new(char *word, t_tk_type type);
+bool		tk_list_add_back(t_data *data, t_tk_list *new);
+char		*tk_make_word(char *line, t_tk_type type);
 
-//error.c
-void	print_error(char *error_msg, char*addition, int exit_state);
 
-//executer.c
-void	executor(t_data *data);
+void		expander(t_data *data);
 
-//expander.c
-void	expander(t_data *data);
-
-//free.c
-void	free_all_data(t_data *data);
-void	tk_free_list(t_data *data);
-
-//lexer.c
-void	lexer(char *line, t_data *data);
-
-//main.c
-
-//make_path.c
-char	**make_path(const char *path_line);
-
-//minishell.c
-void	handler(int sig);
-void	minishell(t_data *data);
-
-//perser.c
-void	perser(t_data *data);
-
-//signals.c
-void	handle_signals(void);
-
-//tk_list.c
 t_tk_type	tk_get_tktype(char letter);
-t_tk	*tk_list_new(char *word, t_tk_type type);
-void	tk_list_add_back(t_data *data, t_tk *new);
-char	*tk_make_word(char *line, t_tk_type type);
+void		lexer(t_data *data, char *line);
+void		executer(t_data *data);
+bool		parser(t_data *data);
+
+void		free_all_data(t_data *data, bool exit_flag);
+void		tk_free_list(t_data *data);
+void		put_error_destroy_data_exit(
+				t_data *data, char *error_msg, int status);
+bool		put_error_destroy_data_continue(t_data *data,
+				char *error_msg, int state);
+
+void		confirm_tk(t_data *data);
+void		*ft_calloc_e(size_t n, size_t size, t_data *data);
+void	*ms_clear_cmd_and_return_null(t_cmd *head);
+char	**ms_parser_cmdnew_arg(t_tk *token, size_t i_token, t_data *data);
+char	*ms_getpath_cmd(char *name, t_data* data);
+char	*ft_strdup_e(char *s, t_data *data);
+t_list	*ft_lstnew_e(void *content, t_data *data);
 
 
-//tk_utils.c
-t_tk_type	tk_get_tktype(char letter);
+int		ms_builtin_cd(char *argv[], t_data *data);
+int		ms_builtin_echo(char *argv[], t_data *data);
+int		ms_builtin_env(char *argv[], t_data *data);
+int		ms_builtin_exit(char *argv[], t_data *data);
+int		ms_builtin_export(char *argv[], t_data *data);
+void	ms_search_env_and_set(char *env_key, t_data *data);
+int		ms_builtin_pwd(char *argv[], t_data *data);
+int		ms_builtin_unset(char *argv[], t_data *data);
+int		ms_builtin_cd(char	*argv[], t_data *data);
 
-//utils_libft.c
-int		ft_strlen(const char *str);
-void	*ft_calloc(size_t n, size_t size);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
-
-//utils_libft2.c
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ms_getenv_val(char *env_key, t_data *data);
+bool	ms_is_validenv(char *env_candidate);
+bool	ms_is_same_envkey(char *dest, char *src);
 
 
+void	ms_sigset_rl(void);
+void	ms_sigset_noquit(void);
+void	ms_sigset_rl_heredoc(void);
+void	ms_sigset_exec(void);
+bool	ms_strisdigit(char *str);
+
+int	(*ms_builtin_getfunc(char *arg))(char *argv[], t_data *data);
+
+void		ms_fd_close(int fd[2]);
+void		ms_fd_copy(int dest[2], int src[2]);
+int			ms_fd_last_fd(t_fd *fd_lst);
+void		ms_fd_close_all_cmd(t_cmd *cmd);
+//static void	ms_fd_close_fds(t_fd *fd);
 
 
-//debug.c
-void	confirm_data(t_data *data);
-void	here_debug(void);
-void	confirm_tklist(t_data *data);
-void	put_pid(void);
+void		ms_exec_in_child_process(t_cmd *cmd, t_data *data);
 
+char	**ms_map_lst2map(t_list *lst);
 
 
 #endif
