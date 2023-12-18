@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:35:57 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/05/21 10:54:56 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:48:32 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(const char *str)
 	int	len;
 
 	len = 0;
-	while (str[len] != '\0')
+	while (str[len])
 		len++;
 	return (len);
 }

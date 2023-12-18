@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:10:50 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:44:30 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/10 14:52:08 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ms_builtin_exit(char *argv[], t_data *data)
 
 	ft_putendl_fd(MSG_EXIT, STDOUT_FILENO);
 	if (!data || argv == NULL || argv[0] == NULL || argv[1] == NULL)
-		status = g_shell.status;
+		status = data->status;
 	else if (argv[2] == NULL)
 	{
 		if (ms_strisdigit(argv[1]))

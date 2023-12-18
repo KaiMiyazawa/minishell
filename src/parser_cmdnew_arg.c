@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cmdnew_arg.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:19:53 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:37:16 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:51:10 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ms_parser_cmdnew_arg(t_token *token, size_t i_token)
 	size_t	arg_count;
 
 	size = ms_parser_cmdnew_arg_size(token, i_token);
-	arg = (char **)malloc((size + 1) * sizeof(char *));
+	arg = (char **)ft_calloc((size + 1), sizeof(char *));
 	if (arg == NULL)
 		return (NULL);
 	arg_count = 0;

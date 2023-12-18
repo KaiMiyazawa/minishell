@@ -6,19 +6,18 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:11:03 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:20:05 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/13 16:42:44 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void		valid_check(char *argv);
+static int		valid_check(char *argv);
 static int		ms_set_environ(char **argv, t_data *data);
-static t_list	*ms_lstnew_env(char *env_key);
+static void		search_env_and_set_ex(char *env_key, t_data *data, t_list *now);
 
 int	ms_builtin_export(char *argv[], t_data *data)
 {
-	int		return_status;
 	char	*eq;
 	t_list	*now;
 
@@ -37,24 +36,40 @@ int	ms_builtin_export(char *argv[], t_data *data)
 		}
 		return (0);
 	}
-	return_status = ms_set_environ(&argv[1], data);
-	return (return_status);
+	return (ms_set_environ(&argv[1], data));
 }
 
-void	ms_search_env_and_set(char *env_key, t_data *data)
+static bool	is_some_envkey_full(char *dest, char *src)
 {
-	t_list	*now;
+	int	i;
+
+	i = 0;
+	while (dest[i] == src[i] && (dest[i] != '\0' && src[i] != '\0'))
+	{
+		if (dest[i] == '=')
+		{
+			if (src[i] == '=')
+				return (true);
+			else
+				return (false);
+		}
+		i++;
+	}
+	return (false);
+}
+
+static void	search_env_and_set_ex(char *env_key, t_data *data, t_list *now)
+{
 	t_list	*prev;
 	t_list	*new;
 
-	now = data->environ;
 	prev = NULL;
 	while (now != NULL)
 	{
-		if (ms_is_same_envkey(now->content, env_key))
+		if (is_some_envkey_full(now->content, env_key))
 		{
 			free(now->content);
-			env_key[ft_strlen(env_key)] = '=';
+			now->content = NULL;
 			now->content = ft_strdup(env_key);
 			if (now->content == NULL)
 				exit(EXIT_FAILURE);
@@ -63,72 +78,54 @@ void	ms_search_env_and_set(char *env_key, t_data *data)
 		prev = now;
 		now = now->next;
 	}
-	new = ms_lstnew_env(env_key);
+	new = lstnew_env_ex(env_key);
 	if (prev == NULL)
 		data->environ = new;
 	else
 		prev->next = new;
 }
 
-static void	valid_check(char *argv)
+static int	valid_check(char *argv)
 {
-	int	i;
+	int		i;
 
 	i = 0;
-	if (ft_isdigit(argv[i]) || (!ft_isalnum(argv[i]) && argv[i] != '_'))
-		exit(EXIT_FAILURE);
+	if (ft_isdigit(argv[i]) || (!ft_isalpha(argv[i]) && argv[i] != '_'))
+		return (1);
+	i++;
 	while (argv[i] != '\0')
 	{
 		if (argv[i] == '=')
-			break ;
-		if (argv[i] == '+' && argv[i + 1] == '=')
-			break ;
-		if (argv[i] == '-' && argv[i + 1] == '=')
-			break ;
+			return (0);
 		if (!ft_isalnum(argv[i]) && argv[i] != '_')
-		{
-			ft_putendl_fd(MSG_INVAL_ID, STDERR_FILENO);
-			exit(EXIT_FAILURE);
-		}
+			return (1);
 		i++;
 	}
+	return (-1);
 }
 
 static int	ms_set_environ(char **argv, t_data *data)
 {
 	int		return_status;
 	size_t	i;
-	char	*eq;
+	int		check;
 
 	return_status = 0;
 	i = 0;
 	while (argv[i] != NULL)
 	{
-		valid_check(argv[i]);
-		eq = ft_strchr(argv[i], '=');
-		if (eq == NULL && ++i)
-			continue ;
-		*eq = '\0';
-		if (ms_is_validenv(argv[i]) == false)
+		check = valid_check(argv[i]);
+		if (check != 0)
 		{
-			*eq = '=';
-			ft_putendl_fd(MSG_INVAL_ID, STDERR_FILENO);
+			if (check == 1)
+				ft_putendl_fd(MSG_INVAL_ID, STDERR_FILENO);
+			if (check == 1)
+				return_status = 1;
 			i++;
-			return_status = 1;
+			continue ;
 		}
-		else
-			ms_search_env_and_set(argv[i++], data);
+		search_env_and_set_ex(argv[i], data, data->environ);
+		i++;
 	}
 	return (return_status);
-}
-
-static t_list	*ms_lstnew_env(char *env_key)
-{
-	t_list	*new;
-
-	env_key[ft_strlen(env_key)] = '=';
-	new = ft_lstnew(ft_strdup(env_key));
-	if (new == NULL || new->content == NULL)
-		exit(EXIT_FAILURE);
-	return (new);
 }

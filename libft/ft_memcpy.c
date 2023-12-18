@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:34:19 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/05/31 13:33:22 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:42 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-//int	main(void)
-//{
-//	char s1[] ="abcdefg";
-//	char s2[] ="xzy";
-
-//	printf("%s\n",memcpy(s1,s2,3));
-//	printf("%s\n",ft_memcpy(s1,s2,3));
-//}

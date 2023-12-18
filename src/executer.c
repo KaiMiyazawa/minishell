@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec.c                                             :+:      :+:    :+:   */
+/*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:13:48 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:14:19 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 16:19:19 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	executer(t_cmd *cmd, t_data *data)
 {
 	int	(*builtin)(char *arg[], t_data *data);
 
+	sigset_exec();
 	if (cmd == NULL)
 		return ;
 	builtin = ms_builtin_getfunc(cmd->arg[0]);

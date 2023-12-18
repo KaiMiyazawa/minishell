@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:35:32 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/05/21 10:54:08 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:29 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-//int	main(void)
-//{
-//	char a[20] = "aiouieo";
-//	printf("%s\n",ft_memchr(a,'o',sizeof(a)));
-//	printf("%s\n",memchr(a,'o',sizeof(a)));
-//}

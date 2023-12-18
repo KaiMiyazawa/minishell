@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 12:28:45 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/11/24 18:48:35 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:48:40 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_itoa(int n)
 		size = (get_digit(-n_long) + 2) * sizeof(char);
 	else
 		size = (get_digit(n_long) + 1) * sizeof(char);
-	result = (char *)malloc(size);
+	result = (char *)ft_calloc(size, 1);
 	if (!result)
 		return (NULL);
 	result[--size] = '\0';
@@ -63,16 +63,3 @@ char	*ft_itoa(int n)
 		result[0] = '-';
 	return (result);
 }
-
-//int	main(void)
-//{
-//	char *a = ft_itoa(-5859);
-//	printf("%s\n", a);
-//	char *b = ft_itoa(-2147483647);
-//	printf("%s\n", b);
-//	char *c = ft_itoa(0);
-//	printf("%s\n", c);
-//	free(a);
-//	free(b);
-//	free(c);
-//}

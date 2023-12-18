@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:09:55 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:08:00 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:50:17 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,13 @@ static int	ms_builtin_cd_export(char *key, char *val, t_data *data)
 	if (key == NULL || val == NULL)
 		return (1);
 	len = ft_strlen(key) + 1;
-	key_value = (char *)malloc((len + ft_strlen(val) + 1) * sizeof(char));
+	key_value = (char *)ft_calloc((len + ft_strlen(val) + 1), sizeof(char));
 	if (key_value == NULL)
 		return (errno);
 	ft_strlcpy(key_value, key, len);
 	ft_strlcpy(key_value + len, val, ft_strlen(val) + 1);
-	ms_search_env_and_set(key_value, data);
+	ms_search_env_and_set(key_value, data, data->environ);
 	free(key_value);
+	key_value = NULL;
 	return (0);
 }

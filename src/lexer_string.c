@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:16:30 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:21:11 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/13 16:55:07 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static void	ms_lexer_string_dollar(char *line, size_t *pos, t_list **head, \
 {
 	errno = 0;
 	ft_lstadd_back(head, \
-		ms_expand_envvar(line, pos, ft_strlen(&line[*pos]), data));
+			ms_expand_envvar(line, pos, ft_strlen(&line[*pos]), data));
 	if (errno == ENOMEM)
 		exit(EXIT_FAILURE);
 }

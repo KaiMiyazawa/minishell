@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:17:32 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/05/21 16:38:44 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:24 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,3 @@ int	ft_isalnum(int character)
 	else
 		return (0);
 }
-
-//#include <stdio.h>
-//#include <ctype.h>
-//#include <limits.h>
-
-//int main(void)
-//{
-//	for (int i = -5; i < UCHAR_MAX +5; ++i) {
-//		if (isalnum(i)) {
-//			printf("%c (%x)\n", i, i);
-//		}
-//	}
-//}

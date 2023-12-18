@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getpath.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:14:45 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 12:00:00 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:50:53 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static char	*ms_getpath_envpath_iter(char *name, char **envpath_split)
 	i = 0;
 	while (envpath_split[i])
 	{
+		ft_memset(&stat_buf, 0, sizeof(struct stat));
 		cmdpath = ms_getpath_join(envpath_split[i], name);
 		if (cmdpath == NULL)
 			return (ms_map_clear(envpath_split, ms_map_size(envpath_split)));
@@ -95,7 +96,7 @@ static char	*ms_getpath_join(char *dirpath, char *name)
 
 	dir_len = ft_strlen(dirpath);
 	name_len = ft_strlen(name);
-	path = (char *)malloc((dir_len + name_len + 2) * sizeof(char));
+	path = (char *)ft_calloc((dir_len + name_len + 2), sizeof(char));
 	if (path == NULL)
 		return (NULL);
 	ft_strlcpy(path, dirpath, dir_len + 1);

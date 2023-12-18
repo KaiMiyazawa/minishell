@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_cmdnew_output.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:21:39 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:40:03 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:51:27 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	ms_parser_output_sub(t_fd *output, t_token *token, size_t *i_token);
 
-t_fd	*ms_parser_cmdnew_output(t_token *token, size_t i_token)
+t_fd	*ms_parser_cmdnew_output(t_token *token, size_t i_token, t_data *data)
 {
 	t_fd	*output;
 	ssize_t	size;
@@ -22,15 +22,16 @@ t_fd	*ms_parser_cmdnew_output(t_token *token, size_t i_token)
 	size = ms_parser_cmdnew_fdsize(token, i_token, TYPE_OUT);
 	if (size == -1)
 		return (print_err_set_status_return_null(\
-				MSG_SYNTAX_ERR, 258));
-	output = (t_fd *)malloc((size + 1) * sizeof(t_fd));
+				MSG_SYNTAX_ERR, 258, data));
+	output = (t_fd *)ft_calloc((size + 1), sizeof(t_fd));
 	if (output == NULL)
 		exit(EXIT_FAILURE);
 	if (ms_parser_output_sub(output, token, &i_token) == false)
 	{
 		free(output);
+		output = NULL;
 		return (print_err_set_status_return_null(\
-				strerror(errno), 1));
+				strerror(errno), 1, data));
 	}
 	return (output);
 }

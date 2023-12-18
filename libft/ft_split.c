@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:49:20 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/11/24 18:48:35 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:49:16 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	*make_words(char *str, char charset, int count)
 	int		k;
 
 	size_of_word = ft_unique_strlen(str, charset, count);
-	one_word = (char *)malloc(sizeof(char) * (size_of_word + 1));
+	one_word = (char *)ft_calloc(sizeof(char), (size_of_word + 1));
 	if (!one_word)
 		return (NULL);
 	k = 0;
@@ -101,7 +101,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	word_count = cou_word((char *)s, c);
-	resu_vec = (char **)malloc(sizeof(char *) * (word_count + 1));
+	resu_vec = (char **)ft_calloc(sizeof(char *), (word_count + 1));
 	if (!resu_vec)
 		return (NULL);
 	if (word_count != 0)
@@ -119,23 +119,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (resu_vec);
 }
-
-//int	main(void)
-//{
-//	char	**result_char_vec;
-//	int		i;
-
-//	result_char_vec = ft_split("\0aa\0bbb", '\0');
-//	if (result_char_vec)
-//	{
-//		i = 0;
-//		while (result_char_vec[i])
-//		{
-//			printf("%d: %s\n", (i + 1), result_char_vec[i]);
-//			free(result_char_vec[i]);
-//			i++;
-//		}
-//		free(result_char_vec);
-//	}
-//	return (0);
-//}

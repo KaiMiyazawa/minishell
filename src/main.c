@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:18:15 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:51:19 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 16:19:22 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void		init(char *envp[], t_data *data);
 static t_list	*tlst_from_strlst(char *envp[]);
-static char		*readline_e(void);
+static char		*readline_e(t_data *data);
 static void		ms_clear_token(t_token *token);
 
-t_shell		g_shell;
+int			g_signum;
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -28,31 +28,32 @@ int	main(int argc, char *argv[], char *envp[])
 	init(envp, &data);
 	while (1)
 	{
-		data.line = readline_e();
+		data.line = readline_e(&data);
 		if (data.line == NULL)
 			break ;
+		if (ft_strlen(data.line) == 0 && !free_and_return(data.line))
+			continue ;
 		if (*(data.line))
 		{
 			add_history(data.line);
 			data.token = lexer(&data);
-			g_shell.cmd = parser(data.token, &data);
-			sigset_exec();
-			executer(g_shell.cmd, &data);
+			data.cmd = parser(data.token, &data);
+			executer(data.cmd, &data);
 			ms_clear_token(data.token);
 		}
 		free(data.line);
+		data.line = NULL;
 	}
 	ms_builtin_exit(NULL, &data);
-	return (g_shell.status);
+	return (data.status);
 }
 
 static void	init(char *envp[], t_data *data)
 {
 	data->environ = tlst_from_strlst(envp);
-	g_shell.status = 0;
-	g_shell.cmd = NULL;
-	g_shell.kill_child = false;
-	g_shell.heredoc_sigint = false;
+	data->status = 0;
+	data->cmd = NULL;
+	g_signum = -1;
 	data->now_cmd = NULL;
 }
 
@@ -80,7 +81,7 @@ static t_list	*tlst_from_strlst(char *envp[])
 	return (head.next);
 }
 
-static char	*readline_e(void)
+static char	*readline_e(t_data *data)
 {
 	char	*line;
 	char	*result;
@@ -90,8 +91,17 @@ static char	*readline_e(void)
 	rl_done = 0;
 	rl_event_hook = NULL;
 	line = readline(PROMPT_MINISH);
-	result = ft_strtrim_space(line);
+	if (line == NULL)
+		result = NULL;
+	else if (ft_strlen(line) == 0)
+		result = ft_strdup("");
+	else
+		result = ft_strtrim(line, " \t");
 	free(line);
+	line = NULL;
+	if (g_signum == SIGINT)
+		data->status = 1;
+	g_signum = -1;
 	return (result);
 }
 
@@ -105,12 +115,9 @@ static void	ms_clear_token(t_token *token)
 	while (&token[i] && token[i].str)
 	{
 		free(token[i].str);
+		token[i].str = NULL;
 		i++;
 	}
 	free(token);
+	token = NULL;
 }
-
-// __attribute__((destructor)) static void destructor()
-// {
-//     system("leaks -q minishell");
-// }

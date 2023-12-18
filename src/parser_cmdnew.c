@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:23:01 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/08 17:19:29 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/10 14:57:57 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_cmd	*ms_parser_cmdnew(t_token *token, size_t *idx, t_data *data)
 	cmd = (t_cmd *)ft_calloc(1, sizeof(t_cmd));
 	if (cmd == NULL)
 		return (NULL);
-	cmd->input = ms_parser_cmdnew_input(token, *idx);
+	cmd->input = ms_parser_cmdnew_input(token, *idx, data);
 	if (cmd->input == NULL)
 		return (ms_clear_cmd_and_return_null(cmd));
-	cmd->output = ms_parser_cmdnew_output(token, *idx);
+	cmd->output = ms_parser_cmdnew_output(token, *idx, data);
 	if (cmd->output == NULL)
 		return (ms_clear_cmd_and_return_null(cmd));
 	cmd->arg = ms_parser_cmdnew_arg(token, *idx);

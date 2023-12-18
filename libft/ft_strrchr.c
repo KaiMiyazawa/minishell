@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:08:58 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/05/31 20:08:33 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:55:36 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-//int	main(void)
-//{
-//	char a[20] = "aiouieo";
-//	printf("%s\n",ft_strrchr(a,'\0'));
-//	printf("%s\n",strrchr(a,'\0'));
-//}

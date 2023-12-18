@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_exec_builtin.c                                  :+:      :+:    :+:   */
+/*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:12:43 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/02 22:57:23 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/10 14:52:42 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ms_exec_a_builtin(t_cmd *cmd, int (*builtin)(char *arg[],
 		dup2(use_fd[0], STDIN_FILENO);
 	if (use_fd[1] >= STDIN_FILENO && use_fd[1] != STDOUT_FILENO)
 		dup2(use_fd[1], STDOUT_FILENO);
-	g_shell.status = builtin(cmd->arg, data);
+	data->status = builtin(cmd->arg, data);
 	ms_fd_close_all_cmd(cmd);
 	dup2(tmp_fd[0], STDIN_FILENO);
 	dup2(tmp_fd[1], STDOUT_FILENO);

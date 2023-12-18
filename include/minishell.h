@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:28:24 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 12:19:54 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/13 16:20:41 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@
 # include "minishell_typedef.h"
 # include "minishell_constants.h"
 
-extern t_shell	g_shell;
+extern int		g_signum;
 
-//void	init_global(char *envp[], t_data *data);
 void	sigset_rl(void);
 void	sigset_rl_heredoc(void);
 void	sigset_exec(void);
@@ -57,8 +56,8 @@ t_cmd	*parser(t_token *token, t_data *data);
 t_cmd	*ms_parser_cmdnew(t_token *token, size_t *idx, t_data *data);
 char	**ms_parser_cmdnew_arg(t_token *token, size_t i_token);
 size_t	ms_parser_cmdnew_fdsize(t_token *token, size_t idx, int type);
-t_fd	*ms_parser_cmdnew_input(t_token *token, size_t i_token);
-t_fd	*ms_parser_cmdnew_output(t_token *token, size_t i_token);
+t_fd	*ms_parser_cmdnew_input(t_token *token, size_t i_token, t_data *data);
+t_fd	*ms_parser_cmdnew_output(t_token *token, size_t i_token, t_data *data);
 
 bool	ms_isenvchar(int c);
 t_list	*ms_expand_envvar(char *line, size_t *pos, size_t len, t_data *data);
@@ -93,7 +92,7 @@ int		ms_builtin_echo(char *argv[], t_data *data);
 int		ms_builtin_env(char *argv[], t_data *data);
 int		ms_builtin_exit(char *argv[], t_data *data);
 int		ms_builtin_export(char *argv[], t_data *data);
-void	ms_search_env_and_set(char *env_key, t_data *data);
+void	ms_search_env_and_set(char *env_key, t_data *data, t_list *now);
 int		ms_builtin_pwd(char *argv[], t_data *data);
 int		ms_builtin_unset(char *argv[], t_data *data);
 
@@ -102,9 +101,13 @@ void	*ms_map_clear(char **map, size_t size);
 size_t	ms_map_size(char **map);
 
 void	*free_and_return(void *malloc_obj);
-void	*print_err_set_status_return_null(char *str, int status);
+void	*print_err_set_status_return_null(char *str, int status, \
+			t_data *data);
 void	*ms_clear_cmd_and_return_null(t_cmd *head);
 bool	ms_is_directory(char *path);
 char	*ft_strtrim_space(char const *s1);
+
+t_list	*lstnew_env_ex(char *env_key);
+void	ms_search_env_and_set(char *env_key, t_data *data, t_list *now);
 
 #endif

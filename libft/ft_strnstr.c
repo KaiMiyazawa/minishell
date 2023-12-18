@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:03:25 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/05/31 14:36:21 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:55:32 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
-
-//int	main(void)
-//{
-//	char	*p;
-//	size_t num = 3;
-//	//sizeof("abcdfghijk");
-
-//	p = ft_strnstr("abcdefghijk", "bc", num);
-//	printf("検索文字列が見つかった場所から表示→ %s\n",p);
-//	p = strnstr("abcdefghijk", "bc", num);
-//	printf("検索文字列が見つかった場所から表示→ %s\n",p);
-//	return (0);
-//}

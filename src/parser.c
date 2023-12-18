@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:23:12 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 12:12:36 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/10 14:57:03 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_cmd	*parser(t_token *token, t_data *data)
 	t_cmd	*now;
 
 	if (!ms_parser_chktokenflag(token))
-		return (print_err_set_status_return_null(MSG_SYNTAX_ERR, 258));
+		return (print_err_set_status_return_null(MSG_SYNTAX_ERR, 258, data));
 	idx = 0;
 	head = ms_parser_cmdnew(token, &idx, data);
 	if (head == NULL)
@@ -55,10 +55,15 @@ void	*ms_clear_cmd_and_return_null(t_cmd *head)
 	{
 		next = now->next;
 		free(now->path);
+		now->path = NULL;
 		free(now->arg);
+		now->arg = NULL;
 		free(now->input);
+		now->input = NULL;
 		free(now->output);
+		now->output = NULL;
 		free(now);
+		now = NULL;
 		now = next;
 	}
 	return (NULL);

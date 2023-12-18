@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 16:23:41 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/11/24 18:48:35 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:50 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,3 @@ void	ft_putnbr_fd(int n, int fd)
 	c = (n_long % 10) + '0';
 	write(fd, &c, 1);
 }
-
-//int main(void)
-//{
-//	ft_putnbr_fd(INT_MAX -1, 1);
-//}

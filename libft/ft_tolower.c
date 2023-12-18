@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 10:11:37 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/05/21 10:55:19 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:55:48 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_tolower(int c)
 		c += 'a' - 'A';
 	return (c);
 }
-
-//#include<stdio.h>
-//int main(void)
-//{
-//	printf("%c\n", ft_tolower('Z'));
-//}

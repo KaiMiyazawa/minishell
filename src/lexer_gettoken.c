@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_gettoken.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:15:27 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:16:30 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 12:36:50 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ms_lexer_gettoken(t_token *token, char *line, t_data *data)
 		token[i].type = ms_lexer_gettoken_classify(str);
 		token[i].str = ms_lexer_string(str, data);
 		free(str);
+		str = NULL;
 		count += len;
 		if (token[i].str != NULL)
 			i++;

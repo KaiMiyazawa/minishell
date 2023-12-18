@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:24:34 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:45:41 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:52:02 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 void	*free_and_return(void *malloc_obj)
 {
 	free(malloc_obj);
+	malloc_obj = NULL;
 	return (NULL);
 }
 
-void	*print_err_set_status_return_null(char *str, int status)
+void	*print_err_set_status_return_null(char *str, int status, \
+		t_data *data)
 {
 	if (str != NULL)
 		ft_putendl_fd(str, STDERR_FILENO);
 	if (status >= 0)
-		g_shell.status = status;
+		data->status = status;
 	return (NULL);
 }
 

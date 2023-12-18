@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 12:11:31 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/05/25 15:20:37 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:46 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,3 @@ void	*ft_memmove(void *s1, const void *s2, size_t size)
 	}
 	return (s1);
 }
-
-//int	main(void)
-//{
-//	char s1[] ="abcdefg";
-//	char s2[] ="xzy";
-
-//	printf("%s\n",memmove(s1,s2,3));
-//	printf("%s\n",ft_memmove(s1,s2,3));
-//}

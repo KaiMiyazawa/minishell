@@ -3,47 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
+/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 17:42:59 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/12/02 22:51:52 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/17 15:48:07 by kmiyazaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//void	*ft_calloc(size_t n, size_t size)
+//{
+//	void	*result;
+
+//	if (size != 0 && n > SIZE_MAX / size)
+//		return (NULL);
+//	result = (void *)malloc(n * size);
+//	if (!result)
+//		ft_bzero(result, n * size);
+//	return (result);
+//}
+
 void	*ft_calloc(size_t n, size_t size)
 {
-	void	*result;
+	size_t	b;
+	void	*p;
 
-	if (size != 0 && n > SIZE_MAX / size)
+	if (n == 0 || size == 0)
+	{
+		n = 1;
+		size = 1;
+	}
+	b = n * size;
+	p = malloc(b);
+	if (p == NULL)
 		return (NULL);
-	result = (void *)malloc(n * size);
-	if (!result)
-		ft_bzero(result, n * size);
-	return (result);
+	else
+		ft_bzero(p, b);
+	return (p);
 }
-
-//int main(void)
-//{
-//	int* values = ft_calloc(ALLOCATE_SIZE, sizeof(int));
-//	if (values == NULL) {
-//		exit(EXIT_FAILURE);
-//	}
-
-//	for (int i = 0; i < ALLOCATE_SIZE; ++i) {
-//		printf("%d ", values[i]);
-//	}
-//	printf("\n");
-
-//	for (int i = 0; i < ALLOCATE_SIZE; ++i) {
-//		values[i] = i;
-//	}
-
-//	for (int i = 0; i < ALLOCATE_SIZE; ++i) {
-//		printf("%d ", values[i]);
-//	}
-//	printf("\n");
-
-//	free(values);
-//}

@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 18:17:01 by hrinka            #+#    #+#             */
-/*   Updated: 2023/12/09 11:22:02 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/16 16:29:49 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_token	*lexer(t_data *data)
 	size_t	size;
 
 	size = ms_lexer_tokensize(data->line);
-	token = (t_token *)malloc((size + 1) * sizeof(t_token));
+	token = (t_token *)ft_calloc((size + 1), sizeof(t_token));
 	if (token == NULL)
 		exit(ENOMEM);
 	ms_lexer_gettoken(token, data->line, data);

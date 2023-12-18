@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+         #
+#    By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 17:43:04 by hrinka            #+#    #+#              #
-#    Updated: 2023/12/09 12:33:17 by miyazawa.ka      ###   ########.fr        #
+#    Updated: 2023/12/17 13:18:52 by kmiyazaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC				= main.c \
 					parser_cmdnew_output.c \
 					sighandler.c \
 					sigset.c \
-					utils.c
+					utils.c \
+					utils2.c
 
 # Enumeration of directories
 SRCDIR			= ./src
@@ -66,9 +67,9 @@ LIBS			= $(LIBDIR)/$(LIBNAME).a
 
 # Aliases of commands
 CC				= cc
-RM				= rm
 
 # Command options (flags)
+#CFLAGS			= -Wall -Wextra -Werror -fsanitize=address
 CFLAGS			= -Wall -Wextra -Werror
 
 INCLUDES		= -I$(INCDIR) -I$(LIBDIR)/include
@@ -99,7 +100,7 @@ re: fclean all
 
 # Recipes
 $(NAME): $(OBJS)
-	$(CC) $(INCLUDES) $(OBJS) $(LIBS) $(LDFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(LDFLAGS) -o $(NAME)
 $(LIBS):
 	$(MAKE) -C $(LIBDIR)
 $(OBJDIR):

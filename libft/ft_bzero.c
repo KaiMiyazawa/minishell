@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 08:51:19 by miyazawa.ka       #+#    #+#             */
-/*   Updated: 2023/05/25 15:07:32 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:21 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,3 @@ void	ft_bzero(void *s, size_t n)
 	}
 	return ;
 }
-
-//int main(void)
-//{
-//	void *a = "aaassssaaa";
-//	ft_bzero(a,11);
-//	printf("%s\n", a);
-//}

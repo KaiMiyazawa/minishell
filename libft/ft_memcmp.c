@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmiyazaw <kmiyazaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:52:15 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/05/24 14:35:33 by kmiyazaw         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:54:34 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t size)
 	}
 	return (0);
 }
-
-//int main(void){
-//	char a[] ="aiueo";
-//	char b[] ="aiukeo";
-
-//	printf("%d", ft_memcmp(a, b, 4));
-
-//}

@@ -6,7 +6,7 @@
 /*   By: miyazawa.kai.0823 <miyazawa.kai.0823@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 10:30:24 by kmiyazaw          #+#    #+#             */
-/*   Updated: 2023/11/27 21:44:50 by miyazawa.ka      ###   ########.fr       */
+/*   Updated: 2023/12/13 11:55:29 by miyazawa.ka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,3 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (0);
 }
-
-//int main(void){
-//	char *a ="\200";
-//	char *b ="\0";
-
-//	printf("%d", ft_strncmp(a, b, 1));
-//	printf("%d", strncmp(a, b, 1));
-//}
