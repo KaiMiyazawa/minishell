@@ -30,8 +30,6 @@ int	ms_builtin_cd(char	*argv[], t_data *data)
 			return (ms_builtin_cd_env(ENV_HOME, data));
 		ms_setpath_home(path, argv[1], data);
 	}
-	else if (ft_strcmp(argv[1], STR_OLDPWD) == 0)
-		return (ms_builtin_cd_env(ENV_OLDPWD, data));
 	else if (argv[1][0] == '/')
 		ms_setpath_absolute(path, argv[1]);
 	else
